@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Replace model with SKU and MPN in admin invoice</name>
+    <version>0.1</version>
+    <author>Dāvis Mošenkovs</author>
+    <link>https://github.com/DavisNT/OC-Invoice-SKU-MPN</link>
+    <code>davisnt_invoiceskumpn</code>
+    <file path="admin/model/sale/order.php">
+        <operation>
+            <search index="0"><![CDATA[
+            $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+            ]]></search>
+            <add position="replace"><![CDATA[
+            $query = $this->db->query("SELECT op.*, p.sku, p.mpn FROM " . DB_PREFIX . "order_product op LEFT JOIN product p ON op.product_id = p.product_id WHERE order_id = '" . (int)$order_id . "'");
+            ]]></add>
+        </operation>
+    </file>  
+    <file path="admin/controller/sale/order.php">
+        <operation>
+            <search index="0"><![CDATA[
+            'model'    => $product['model'],
+            ]]></search>
+            <add position="replace"><![CDATA[
+             'model'    => $product['model'],
+            'sku'    => $product['sku'],
+            'mpn'    => $product['mpn'],
+            ]]></add>
+        </operation>
+        <operation>
+            <search index="2"><![CDATA[
+            $data['column_model'] = $this->language->get('column_model');
+            ]]></search>
+            <add position="replace"><![CDATA[
+            $data['column_model'] = $this->language->get('column_model');
+            $data['column_sku'] = $this->language->get('column_sku');
+            $data['column_mpn'] = $this->language->get('column_mpn');
+            ]]></add>
+        </operation>
+    </file>  
+    <file path="admin/view/template/sale/order_invoice.tpl">
+        <operation>
+            <search index="0"><![CDATA[
+            <td><b><?php echo $column_model; ?></b></td>
+            ]]></search>
+            <add position="replace"><![CDATA[
+            <td><b><?php echo $column_sku; ?></b></td>
+            <td><b><?php echo $column_mpn; ?></b></td>
+            ]]></add>
+        </operation>
+        <operation>
+            <search index="0"><![CDATA[
+            <td><?php echo $product['model']; ?></td>
+            ]]></search>
+            <add position="replace"><![CDATA[
+            <td><?php echo $product['sku']; ?></td>
+            <td><?php echo $product['mpn']; ?></td>
+            ]]></add>
+        </operation>
+    </file>  
+</modification>
