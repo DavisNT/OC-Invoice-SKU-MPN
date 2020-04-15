@@ -1,10 +1,10 @@
 OpenCart 2.3 Invoice SKU MPN
 ===============
-OpenCart 2.3 modification to display SKU and MPN instead of Model in invoices
+OpenCart 2.3 modification to display Manufacturer name, SKU and MPN instead of Model in invoices
 
 ## Introduction
 
-This modification changes invoices in OpenCart admin interface - adds SKU and MPN columns, and removes Model column from table of products in the invoice.
+This modification changes invoices in OpenCart admin interface - adds Manufacturer, SKU and MPN columns, and removes Model column from table of products in the invoice.
 
 This is tested only on OpenCart 2.3.0.2.
 
@@ -18,6 +18,7 @@ This is tested only on OpenCart 2.3.0.2.
 ```php
 $_['column_sku']             = 'SKU';
 $_['column_mpn']             = 'MPN';
+$_['column_manufacturer']    = 'Manufacturer';
 ```
 
 
