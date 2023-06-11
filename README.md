@@ -1,17 +1,19 @@
-OpenCart 2.3 Invoice SKU MPN
+OpenCart 2.3/3.0 Invoice SKU MPN
 ===============
-OpenCart 2.3 modification to display Manufacturer name, SKU and MPN instead of Model in invoices
+OpenCart 2.3 and 3.0 modification to display Manufacturer name, SKU and MPN instead of Model in invoices
 
 ## Introduction
 
 This modification changes invoices in OpenCart admin interface - adds Manufacturer, SKU and MPN columns, and removes Model column from table of products in the invoice.
 
-This is tested only on OpenCart 2.3.0.2.
+This is tested only on OpenCart 2.3.0.2 and OpenCart 3.0.3.8.
 
 ## Installation
 
+1. For OpenCart 3.0 inside the folder `Invoice-SKU-MPN_oc30.ocmod` compress `install.xml` into `Invoice-SKU-MPN_oc30.ocmod.zip`.
 1. Open Extensions Installer in OpenCart admin interface.
-1. Upload/install `Invoice-SKU-MPN.ocmod.xml`.
+1. On OpenCart 2.3 upload/install `Invoice-SKU-MPN_oc23.ocmod.xml`.
+1. On OpenCart 3.0 upload/install `Invoice-SKU-MPN_oc30.ocmod.zip`.
 1. Open Modifications in OpenCart admin interface and click Refresh.
 1. Edit the language file (e.g. `admin/language/en-gb/sale/order.php`) of your OpenCart installation (e.g. via FTP) and add lines like these: 
 
